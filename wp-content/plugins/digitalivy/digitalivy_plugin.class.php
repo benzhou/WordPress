@@ -10,7 +10,11 @@ class DigitalIvy_Plugin {
 		add_submenu_page( "digitalIvyPluginSettings", "Triton DigitalIvy Plugin Settings", "General Settings", "edit_plugins", "digitalIvyPluginSettings", array( $this, "configForm" ) );
 	}
 
-	public function configForm() {
+	public function init_di_list(){
+		
+	}
+
+	protected function configForm() {
 		$page = $_GET["page"];
 
 		switch ($page) {
