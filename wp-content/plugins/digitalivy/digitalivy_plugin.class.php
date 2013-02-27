@@ -1,5 +1,5 @@
 <?php 
-class DigitalIvy {
+class DigitalIvy_Plugin {
 	public function __construct() {
 
 		
