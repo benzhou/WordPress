@@ -11,7 +11,7 @@ class DigitalIvy_Plugin {
 	}
 
 	public function init_di_list($attrs){
-		echo "Hello DI"
+		echo "Hello DI";
 	}
 
 	protected function configForm() {
