@@ -7,7 +7,7 @@ class DigitalIvy_Plugin {
 
 	public function adminUI() {
 		add_menu_page( "Triton DigitalIvy Plugin Settings",  "Triton DigitalIvy", "edit_plugins", "digitalIvyPluginSettings", array( $this, "configForm" ));
-		add_submenu_page( "digitalIvyPluginSettings", "Triton DigitalIvy Plugin Settings", "General Settings", "edit_plugins", "digitalIvyPluginSettings", array( $this, "configForm" ) );
+		add_submenu_page( "digitalIvyPluginSettings", "Triton DigitalIvy Plugin Genneal Settings", "General Settings", "edit_plugins", "digitalIvyPluginSettingsGeneral", array( $this, "configForm" ) );
 	}
 
 	public function init_di_list(){
