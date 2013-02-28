@@ -34,6 +34,6 @@ $diPlugin = new DigitalIvy_Plugin;
 // Admin UI
 add_action( "admin_menu" ,    array( $diPlugin, "adminUI" ) );
 
-add_shortcode('digitalIvyList', array(&$diPlugin, 'init_di_list'); 
+add_shortcode('digitalIvyList', array($diPlugin, 'init_di_list'); 
 
 ?>
