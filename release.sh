@@ -2,6 +2,8 @@
 
 echo "Go to directory"
 cd ~/mysites/WordPress
+echo "Staging all changes"
+git add .
 echo "Committing current changes"
 git commit -a -m "Auto Release commit"
 echo "Pushing current committed changes"
