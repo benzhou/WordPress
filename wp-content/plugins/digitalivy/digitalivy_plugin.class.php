@@ -10,8 +10,8 @@ class DigitalIvy_Plugin {
 		add_submenu_page( "diPluginSettings", "Triton DigitalIvy Plugin Genneal Settings", "General Settings", "edit_plugins", "diPluginSettings", array( $this, "configForm" ) );
 	}
 
-	public function init_di_list(){
-		
+	public function init_di_list($attrs){
+		echo "Hello DI"
 	}
 
 	protected function configForm() {
