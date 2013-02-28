@@ -28,6 +28,7 @@ License: GPL2
 // Get Class File
 require_once "digitalivy_plugin.class.php";
 
+
 // init see plugin
 $diPlugin = new DigitalIvy_Plugin;
 // Admin UI
