@@ -40,8 +40,23 @@ class DigitalIvy_Plugin {
     	wp_enqueue_script( 'direflection', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/reflection.js', false );
     	wp_enqueue_script( 'di', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/digitalIvy.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection") );
     	wp_enqueue_script( 'dilist', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/diListApp.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection","di"));
+		echo '<div id="container-bg" class="list">
+	            <div id="container-list">
+	                <div id="container-list-header">
+	                        <h1>Currently Active Contests</h1>
+	                </div>
+	                <div id="featured-contest-items">
+	            	
+	                </div>
+	                <div id="container-contestitems">
+	                    <div id="container-contestStates"></div>
+	                    <div id="container-contestListItem"></div>
+	                </div>
+	            </div>
+	        </div>
+			'
 	}
-	
+
 
 	public function di_plugin_head(){
 		echo "$diListShortCodeFound:" . $diListShortCodeFound;
