@@ -32,10 +32,11 @@ class DigitalIvy_Plugin {
 
     	wp_register_style('dicss', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Content/css/listPagestyle.css');
     	wp_register_style('dilistcss', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Content/css/contest-list/style.css');
+    	wp_register_style('diwordpress', plugins_url('diwordpress.css', __FILE__));
 	}
 
 	public function init_di_list($attrs){
-		echo "Hello DI";
+		//echo "Hello DI";
     	// wp_enqueue_script( 'dicarrot', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/carrot/v_alpha/carrot.js', false );
     	// wp_enqueue_script( 'dicache', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/cache/cache.js', false );
     	// wp_enqueue_script( 'dijqueryeasing', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/jquery.easing.1.3.js', array("jquery") );
@@ -65,6 +66,7 @@ class DigitalIvy_Plugin {
 	public function di_plugin_footer(){
 		wp_print_styles('dicss');
 		wp_print_styles('dilistcss');
+		wp_print_styles('diwordpress');
 		wp_print_scripts('dicarrot');
 		wp_print_scripts('dicache');
 		wp_print_scripts('dijqueryeasing');
