@@ -1,7 +1,7 @@
 <?php 
 /*
 Plugin Name: Triton DigitalIvy Contest
-Plugin URI: http://www.tritondigital.com/publishers/audience-management/loyalty-social-engagement-gamification
+Plugin URI: http://benzhouonline.com/wp-content/plugins/digitalivy
 Description: DigitalIvy is cool
 Version: 0.1
 Author: Triton Digital -- Ben Zhou
