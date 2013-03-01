@@ -32,7 +32,7 @@ class DigitalIvy_Plugin {
 	}
 
 	public function init_di_list($attrs){
-		echo "Hello DI";
+		echo "Hello DI1";
  		$diListShortCodeFound = true;
 
 		wp_enqueue_scripts( 'dicarrot', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/carrot/v_alpha/carrot.js', false);
