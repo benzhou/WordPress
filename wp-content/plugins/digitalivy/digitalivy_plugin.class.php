@@ -1,6 +1,6 @@
 <?php 
 class DigitalIvy_Plugin {
-	$diListShortCodeFound = false;
+	private $diListShortCodeFound = false;
 
 	public function __construct() {
 
