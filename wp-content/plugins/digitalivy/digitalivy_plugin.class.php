@@ -44,7 +44,7 @@ class DigitalIvy_Plugin {
     	// wp_enqueue_script( 'direflection', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/reflection.js', false );
     	// wp_enqueue_script( 'di', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/digitalIvy.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection") );
     	// wp_enqueue_script( 'dilist', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/diListApp.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection","di"));
-    	$diListShortCodeFound = true;
+    	$this.$diListShortCodeFound = true;
 
 		echo '<div id="container-bg" class="list">
 	            <div id="container-list">
@@ -66,9 +66,9 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_footer(){
-		echo "$diListShortCodeFound " . $diListShortCodeFound;
+		echo "$diListShortCodeFound " . $this.$diListShortCodeFound;
 		//Only renders the script if the short code presented
-		if($diListShortCodeFound == true){
+		if($this.$diListShortCodeFound == true){
 			//Print out all style /scripts needed for the contest list.
 			//TODO: this is definitely not the place I want to place them (I want to place them in the head instead of footer)
 			wp_print_styles('dicss');
