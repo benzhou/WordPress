@@ -44,6 +44,8 @@ class DigitalIvy_Plugin {
     	// wp_enqueue_script( 'direflection', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/reflection.js', false );
     	// wp_enqueue_script( 'di', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/digitalIvy.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection") );
     	// wp_enqueue_script( 'dilist', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/diListApp.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection","di"));
+    	$diListShortCodeFound = true;
+
 		echo '<div id="container-bg" class="list">
 	            <div id="container-list">
 	                <div id="container-list-header">
@@ -64,56 +66,62 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_footer(){
-		wp_print_styles('dicss');
-		wp_print_styles('dilistcss');
-		wp_print_styles('diwordpress');
-		wp_print_scripts('dicarrot');
-		wp_print_scripts('dicache');
-		wp_print_scripts('dijqueryeasing');
-		wp_print_scripts('dijqueryelastislide');
-		wp_print_scripts('di');
-		wp_print_scripts('dilist');
-		echo '<script type="text/javascript">
-				digitalIvy.listApp.run({
-            	debug: false, 
-	            labels: {
-	                ListEnter: "Enter",
-	                ListView: "View Contest",
-	                sweepCurrentListEnd: "Ends in {0} days",
-	                sweepCurrentListEndToday: "Ends today",
-	                ugcCurrentSubmissionEnd: "Submissions end in {0} days",
-	                ugcCurrentSubmissionEndToday: "Submissions end today",
-	                ugcCurrentVotingEnd: "Voting ends in {0} days",
-	                ugcCurrentVotingEndToday: "Voting ends today",
-	                contestUpcoming: "This contest starts on {0}",
-	                contestClosed: "This contest has closed",
-	                stateC: "Current",
-	                stateU: "Upcoming",
-	                stateCl: "Closed",
-	                searchPh: "Search for Contest",
-	                featured: "Featured Contests",
-	                EMPTYUPCOMINGLIST: "Currently, there are no upcoming contests scheduled. Please check back soon.",
-	                EMPTYCURRENTLIST: "Currently, there are no active contests. Please check back soon.",
-	                EMPTYEXPIREDLIST: "No contests have ended in the last 30 days.",
-	                headers: {
-	                    current: "Currently Active Contests",
-	                    upcoming: "Upcoming Contests",
-	                    closed: "Expired Contests"
-	                }
-	            }, 
-	            filterId: "DEV-4SANBA",
-	            contestListType: 0,
-	            forceHrefToTopFrame: false,
-	            disablePaging: false, // should be true or false
-	            api: {
-	                url: "http://dev4sanban.test.listenernetwork.net",
-	                forceHttps: false,
-	                methods: {
-	                    getContestList: "/Contest/Home/GetContestList"
-	                }
-	            }
-	        });
-			</script>';
+		//Only renders the script if the short code presented
+		if($diListShortCodeFound){
+			//Print out all style /scripts needed for the contest list.
+			//TODO: this is definitely not the place I want to place them (I want to place them in the head instead of footer)
+			wp_print_styles('dicss');
+			wp_print_styles('dilistcss');
+			wp_print_styles('diwordpress');
+			wp_print_scripts('dicarrot');
+			wp_print_scripts('dicache');
+			wp_print_scripts('dijqueryeasing');
+			wp_print_scripts('dijqueryelastislide');
+			wp_print_scripts('di');
+			wp_print_scripts('dilist');
+
+			echo '<script type="text/javascript">
+					digitalIvy.listApp.run({
+	            	debug: false, 
+		            labels: {
+		                ListEnter: "Enter",
+		                ListView: "View Contest",
+		                sweepCurrentListEnd: "Ends in {0} days",
+		                sweepCurrentListEndToday: "Ends today",
+		                ugcCurrentSubmissionEnd: "Submissions end in {0} days",
+		                ugcCurrentSubmissionEndToday: "Submissions end today",
+		                ugcCurrentVotingEnd: "Voting ends in {0} days",
+		                ugcCurrentVotingEndToday: "Voting ends today",
+		                contestUpcoming: "This contest starts on {0}",
+		                contestClosed: "This contest has closed",
+		                stateC: "Current",
+		                stateU: "Upcoming",
+		                stateCl: "Closed",
+		                searchPh: "Search for Contest",
+		                featured: "Featured Contests",
+		                EMPTYUPCOMINGLIST: "Currently, there are no upcoming contests scheduled. Please check back soon.",
+		                EMPTYCURRENTLIST: "Currently, there are no active contests. Please check back soon.",
+		                EMPTYEXPIREDLIST: "No contests have ended in the last 30 days.",
+		                headers: {
+		                    current: "Currently Active Contests",
+		                    upcoming: "Upcoming Contests",
+		                    closed: "Expired Contests"
+		                }
+		            }, 
+		            filterId: "DEV-4SANBA",
+		            contestListType: 0,
+		            forceHrefToTopFrame: false,
+		            disablePaging: false, // should be true or false
+		            api: {
+		                url: "http://dev4sanban.test.listenernetwork.net",
+		                forceHttps: false,
+		                methods: {
+		                    getContestList: "/Contest/Home/GetContestList"
+		                }
+		            }
+		        });
+				</script>';
+		}
 	}
 
 	public function di_plugin_head(){
