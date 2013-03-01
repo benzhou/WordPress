@@ -66,8 +66,9 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_footer(){
+		echo "$diListShortCodeFound " . $diListShortCodeFound 
 		//Only renders the script if the short code presented
-		if($diListShortCodeFound){
+		if($diListShortCodeFound == true){
 			//Print out all style /scripts needed for the contest list.
 			//TODO: this is definitely not the place I want to place them (I want to place them in the head instead of footer)
 			wp_print_styles('dicss');
