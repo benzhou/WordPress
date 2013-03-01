@@ -34,10 +34,10 @@ $diPlugin = new DigitalIvy_Plugin;
 add_action( "admin_menu" ,    array( $diPlugin, "adminUI" ) );
 
 // Init hook so we can register any needed scripts
-//add_action("init", array($diPlugin, 'init_di_plugin'));
+add_action("init", array($diPlugin, 'init_di_plugin'));
 
 //add_action("wp_head", array($diPlugin, "di_plugin_head"));
-
+add_action("wp_footer", array($diPlugin, "di_plugin_footer"));
 //Shortcode 
 add_shortcode('digitalIvyList', array($diPlugin, 'init_di_list')); 
 
