@@ -67,7 +67,7 @@ class DigitalIvy_Plugin {
 		wp_print_scripts('di');
 		wp_print_scripts('dilist');
 		echo '<script type="text/javascript">
-				digitalIvy.application.run({
+				digitalIvy.listApp.run({
             	debug: false, 
 	            labels: {
 	                ListEnter: "Enter",
