@@ -54,7 +54,8 @@ class DigitalIvy_Plugin {
 	                </div>
 	            </div>
 	        </div>
-			'
+			';
+
 	}
 
 
