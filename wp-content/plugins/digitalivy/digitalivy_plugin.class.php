@@ -28,7 +28,10 @@ class DigitalIvy_Plugin {
   //   	wp_enqueue_scripts( 'direflection', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/reflection.js', false , false);
   //   	wp_enqueue_scripts( 'di', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/digitalIvy.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection") , false);
   //   	wp_enqueue_scripts( 'dilist', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Scripts/digitalIvy/0_1/diListApp.js', array("jquery","dicarrot","dicache","dijqueryeasing","dijqueryelastislide","direflection","di"), false);
-	
+
+
+    	wp_register_style('dicss', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Content/css/listPagestyle.css');
+    	wp_register_style('dilistcss', '//dc4olesfnreg4.cloudfront.net/digitalivy/UGC_Client_Rollout_20130221.2/Content/css/contest-list/style.css');
 	}
 
 	public function init_di_list($attrs){
@@ -60,6 +63,8 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_footer(){
+		wp_print_styles('dicss');
+		wp_print_styles('dilistcss');
 		wp_print_scripts('dicarrot');
 		wp_print_scripts('dicache');
 		wp_print_scripts('dijqueryeasing');
