@@ -40,6 +40,7 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_head(){
+		echo "$diListShortCodeFound:" . $diListShortCodeFound;
 		if($diListShortCodeFound){
 			wp_print_scripts('dicarrot');
 			wp_print_scripts('dicache');
