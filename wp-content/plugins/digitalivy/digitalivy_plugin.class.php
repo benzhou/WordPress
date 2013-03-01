@@ -66,7 +66,7 @@ class DigitalIvy_Plugin {
 	}
 
 	public function di_plugin_footer(){
-		echo "$diListShortCodeFound " . $this.$diListShortCodeFound;
+		echo "$diListShortCodeFound " . $this->diListShortCodeFound;
 		//Only renders the script if the short code presented
 		if($this->diListShortCodeFound == true){
 			//Print out all style /scripts needed for the contest list.
