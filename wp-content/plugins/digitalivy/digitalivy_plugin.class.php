@@ -129,7 +129,7 @@ class DigitalIvy_Plugin {
 		                    closed: "Expired Contests"
 		                }
 		            }, 
-		            filterId: "DEV-4SANBA' . get_option(TRITON_DI_OPTION_ORG_CODE) . '",
+		            filterId: "' . get_option(TRITON_DI_OPTION_ORG_CODE) . '",
 		            contestListType: 0,
 		            forceHrefToTopFrame: false,
 		            disablePaging: false, // should be true or false
