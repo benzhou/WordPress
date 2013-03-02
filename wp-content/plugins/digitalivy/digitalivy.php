@@ -35,6 +35,7 @@ if ( ! defined( "TRITON_DI_OPTION_NAME_DEBUG" ) ) define( "TRITON_DI_OPTION_NAME
 
 // Get Class File
 require_once "digitalivy_plugin.class.php";
+require_once "di_Admin_GeneralForm.class.php";
 
 // init see plugin
 $diPlugin = new DigitalIvy_Plugin;
