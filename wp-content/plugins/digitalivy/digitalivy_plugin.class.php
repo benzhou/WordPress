@@ -12,8 +12,8 @@ class DigitalIvy_Plugin {
 	 * using default values.
 	 */
 	public function tritonDIInstall() {
-		add_option( TRITON_DI_OPTION_ORG_CODE,             "http://dev4sanban.test.listenernetwork.net" );
-		add_option( TRITON_DI_OPTION_DATA_FEED_URL,             "" );
+		add_option( TRITON_DI_OPTION_ORG_CODE,             "DEV-4SANBA" );
+		add_option( TRITON_DI_OPTION_DATA_FEED_URL,             "http://dev4sanban.test.listenernetwork.net" );
 		
 	}
 
