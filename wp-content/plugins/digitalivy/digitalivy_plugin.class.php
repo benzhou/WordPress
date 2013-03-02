@@ -129,12 +129,12 @@ class DigitalIvy_Plugin {
 		                    closed: "Expired Contests"
 		                }
 		            }, 
-		            filterId: "DEV-4SANBA",
+		            filterId: "DEV-4SANBA' . get_option(TRITON_DI_OPTION_ORG_CODE) . '",
 		            contestListType: 0,
 		            forceHrefToTopFrame: false,
 		            disablePaging: false, // should be true or false
 		            api: {
-		                url: "http://dev4sanban.test.listenernetwork.net",
+		                url: "'. get_option(TRITON_DI_OPTION_DATA_FEED_URL) . '",
 		                forceHttps: false,
 		                methods: {
 		                    getContestList: "/Contest/Home/GetContestList"
