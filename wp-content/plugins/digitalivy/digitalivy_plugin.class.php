@@ -164,7 +164,7 @@ class DigitalIvy_Plugin {
 		switch ($page) {
 			case "diPluginSettings":
 			default:
-				require_once "di_Admin_GeneralForm.class.php";
+				//require_once "di_Admin_GeneralForm.class.php";
 				$form = new DIAdminGeneralForm($this);
 				$form->run();
 				break;

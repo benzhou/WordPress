@@ -40,8 +40,8 @@ require_once "di_Admin_GeneralForm.class.php";
 // init see plugin
 $diPlugin = new DigitalIvy_Plugin;
 // Install DB
-register_activation_hook( __FILE__, array( $diPlugin, "tritonInstall" ) );
-register_deactivation_hook( __FILE__, array( $diPlugin, "tritonUninstall" ) );
+register_activation_hook( __FILE__, array( $diPlugin, "tritonDIInstall" ) );
+register_deactivation_hook( __FILE__, array( $diPlugin, "tritonDIUninstall" ) );
 
 // Admin UI
 add_action( "admin_menu" ,    array( $diPlugin, "adminUI" ) );
