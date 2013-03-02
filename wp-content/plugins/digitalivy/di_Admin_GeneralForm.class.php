@@ -9,19 +9,19 @@ class DIAdminGeneralForm{
 	}
 
 	public function Get(){
-		include dirname(plugin_basename(__FILE__)) . '/templates/' . 'DI_Admin_GeneralForm.php';
+		include dirname(plugin_basename(__FILE__)) . '/templates/' . 'DI_Admin_General_Form.php';
 	}
 
 	public function Post(){
-		include dirname(plugin_basename(__FILE__)) . '/templates/' . 'DI_Admin_GeneralForm.php';
+		include dirname(plugin_basename(__FILE__)) . '/templates/' . 'DI_Admin_General_Form.php';
 	}
 
 	public function Run(){
 		if ( ! empty( $_POST ) ) {
-			$this->Get();
+			$this->Post();
 		}
 
-		$this->Post();
+		$this->Get();
 	}
 }
 

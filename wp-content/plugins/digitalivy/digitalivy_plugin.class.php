@@ -164,7 +164,6 @@ class DigitalIvy_Plugin {
 				$form = new DIAdminGeneralForm($this);
 				$form->run();
 				break;
-				break;
 		}
 	}
 }
