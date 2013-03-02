@@ -7,6 +7,22 @@ class DigitalIvy_Plugin {
 		
 	}
 
+	/**
+	 * Called upon activation of the plugin, creates all necessary options
+	 * using default values.
+	 */
+	public function tritonDIInstall() {
+		add_option( TRITON_DI_OPTION_ORG_CODE,             "DEV-4SANBA" );
+	}
+
+	/**
+	 * Called upon deactivation of the plugin, cleans up by removing all
+	 * stored options.
+	 */
+	public function tritonDIUninstall() {
+		delete_option( TRITON_DI_OPTION_ORG_CODE );
+	}
+
 	public function adminUI() {
 		add_menu_page( "Triton DigitalIvy Plugin Settings",  "Triton DigitalIvy", "edit_plugins", "diPluginSettings", array( $this, "configForm" ));
 		add_submenu_page( "diPluginSettings", "Triton DigitalIvy Plugin Genneal Settings", "General Settings", "edit_plugins", "diPluginSettings", array( $this, "configForm" ) );

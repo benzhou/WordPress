@@ -25,11 +25,22 @@ License: GPL2
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+if ( ! defined( "TRITON_DI_PLUGIN_VERSION_KEY" ) ) define( "TRITON_DI_PLUGIN_VERSION_KEY", "triton_di_plugin_version" );
+if ( ! defined( "TRITON_DI_PLUGIN_VERSION_NUM" ) ) define( "TRITON_DI_PLUGIN_VERSION_NUM", "0.0.1" );
+if ( ! defined( "TRITON_DI_OPTION_ORG_CODE" ) ) define( "TRITON_DI_OPTION_ORG_CODE", "triton_di_option_org_code" );
+if ( ! defined( "TRITON_DI_OPTION_NAME_DEBUG" ) ) define( "TRITON_DI_OPTION_NAME_DEBUG", "triton_di_option_name_debug" );
+
+
+
 // Get Class File
 require_once "digitalivy_plugin.class.php";
 
 // init see plugin
 $diPlugin = new DigitalIvy_Plugin;
+// Install DB
+register_activation_hook( __FILE__, array( $diPlugin, "tritonInstall" ) );
+register_deactivation_hook( __FILE__, array( $diPlugin, "tritonUninstall" ) );
+
 // Admin UI
 add_action( "admin_menu" ,    array( $diPlugin, "adminUI" ) );
 
