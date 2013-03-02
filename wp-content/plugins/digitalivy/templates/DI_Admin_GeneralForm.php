@@ -14,6 +14,7 @@
 					<label for="org_short_code">Orgnazation Short Code</label>
 				</th>
 				<td>
+					<?php echo get_option( TRITON_DI_OPTION_ORG_CODE ); ?>
 					<input name="org_short_code" type="text" id="org_short_code" value="<?php echo get_option( TRITON_DI_OPTION_ORG_CODE ); ?>" class="regular-text">
 				</td>
 			</tr>
