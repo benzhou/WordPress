@@ -1,4 +1,5 @@
 <?php 
+
 class DIAdminGeneralForm{
 
 	private $_diPlugin = null;
