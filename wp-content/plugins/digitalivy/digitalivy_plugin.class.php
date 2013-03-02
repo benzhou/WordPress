@@ -154,7 +154,7 @@ class DigitalIvy_Plugin {
 		}
 	}
 
-	protected function configForm() {
+	public function configForm() {
 		$page = $_GET["page"];
 
 		switch ($page) {
