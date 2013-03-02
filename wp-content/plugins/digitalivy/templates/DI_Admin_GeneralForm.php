@@ -1,3 +1,28 @@
+<?php if ( ! empty( $template_args["errors"] ) && count( $template_args["errors"] ) > 0 ) { ?>
+	<div class="error">
+		Errors occurred while saving settings:
+		<ul>
+			<?php 
+				foreach( $template_args["errors"] as $error ) {
+					echo "<li>{$error}</li>";
+				}
+			?>
+		</ul>
+	</div>
+<?php } ?>
+
+<?php if ( ! empty( $template_args["alerts"] ) && count( $template_args["alerts"] ) > 0 ) { ?>
+	<div class="updated">
+		<ul>
+			<?php 
+				foreach( $template_args["alerts"] as $alert ) {
+					echo "<li>{$alert}</li>";
+				}
+			?>
+		</ul>
+	</div>
+<?php } ?>
+
 <div class="wrap">
 	<div id="icon-options-general" class="icon32">
 		<br>
@@ -14,7 +39,7 @@
 					<label for="org_short_code">Orgnazation Short Code</label>
 				</th>
 				<td>
-					
+
 					<input name="org_short_code" type="text" id="org_short_code" value="<?php echo get_option( TRITON_DI_OPTION_ORG_CODE ); ?>" class="regular-text">
 				</td>
 			</tr>
