@@ -22,7 +22,7 @@
 					<label for="di_feed_url">DigitalIvy List Feed Url</label>
 				</th>
 				<td>
-					<input name="di_feed_url" type="text" id="di_feed_url" value="<?php echo get_option( TRITON_SEE_OPTION_NAME_URL ); ?>" class="regular-text code">
+					<input name="di_feed_url" type="text" id="di_feed_url" value="<?php echo get_option( TRITON_DI_OPTION_DATA_FEED_URL ); ?>" class="regular-text code">
 					<p class="description">
 						Location of Triton DI Feed Endpoint
 					</p>

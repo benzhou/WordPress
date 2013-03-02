@@ -13,6 +13,8 @@ class DigitalIvy_Plugin {
 	 */
 	public function tritonDIInstall() {
 		add_option( TRITON_DI_OPTION_ORG_CODE,             "DEV-4SANBA" );
+		add_option( TRITON_DI_OPTION_DATA_FEED_URL,             "" );
+		
 	}
 
 	/**
@@ -21,6 +23,8 @@ class DigitalIvy_Plugin {
 	 */
 	public function tritonDIUninstall() {
 		delete_option( TRITON_DI_OPTION_ORG_CODE );
+		delete_option( TRITON_DI_OPTION_DATA_FEED_URL );
+		
 	}
 
 	public function adminUI() {

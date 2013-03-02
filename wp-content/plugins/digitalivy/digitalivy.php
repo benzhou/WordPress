@@ -28,6 +28,7 @@ License: GPL2
 if ( ! defined( "TRITON_DI_PLUGIN_VERSION_KEY" ) ) define( "TRITON_DI_PLUGIN_VERSION_KEY", "triton_di_plugin_version" );
 if ( ! defined( "TRITON_DI_PLUGIN_VERSION_NUM" ) ) define( "TRITON_DI_PLUGIN_VERSION_NUM", "0.0.1" );
 if ( ! defined( "TRITON_DI_OPTION_ORG_CODE" ) ) define( "TRITON_DI_OPTION_ORG_CODE", "triton_di_option_org_code" );
+if ( ! defined( "TRITON_DI_OPTION_DATA_FEED_URL" ) ) define( "TRITON_DI_OPTION_DATA_FEED_URL", "triton_di_option_data_feed_url" );
 if ( ! defined( "TRITON_DI_OPTION_NAME_DEBUG" ) ) define( "TRITON_DI_OPTION_NAME_DEBUG", "triton_di_option_name_debug" );
 
 
