@@ -11,7 +11,7 @@ class DIAdminGeneralForm{
 
 	public function Get(){
 		//include dirname(plugin_basename(__FILE__)) . '/templates/DI_Admin_GeneralForm.php';
-		include plugin_dir_url(__FILE__).'/templates/DI_Admin_GeneralForm.php';
+		include plugin_dir_url(__FILE__).'templates/DI_Admin_GeneralForm.php';
 	}
 
 	public function Post(){
