@@ -90,12 +90,12 @@
 			return this.options.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, "");
 		},
 		_isXDomain : function(){
-			if(this.options.api.forceHttps && document.location.protocol !== "https"){
+			if(this.options.api.forceHttps && document.location.protocol !== "https:"){
 				this._log("_isXDomain : Forced to use Https, but currently on a non-secured page");
 				return true;
 			}
 
-			if(!this.options.api.forceHttps && document.location.protocol !== "http"){
+			if(!this.options.api.forceHttps && document.location.protocol !== "http:"){
 				this._log("_isXDomain : currently on a secured page, but API call will be make using http.");
 				return true;
 			}
