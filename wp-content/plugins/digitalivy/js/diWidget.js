@@ -19,7 +19,7 @@
 	            url: "http://dev4sanban.test.listenernetwork.net",
 	            forceHttps: false,
 	            methods: {
-	                getContestList: "/Home/GetContestList"
+	                getContestList: "/Contest/Home/GetContestList"
 	            }
         	}
 		},
