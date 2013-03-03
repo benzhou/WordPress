@@ -51,7 +51,7 @@
 			var orgCode = options.orgCode,
 				state = options.state || "current",
 				listType = options.listType || 0,
-				xdomain = _this._isXDomain(),
+				xdomain = this._isXDomain(),
 				uri  = this._getApiUrl("getContestList") + "/" + state + "/" + orgCode + "/" + listType + xdomain ? "?callback=?" : "",
 				promise = this._api({
 					url : uri
