@@ -26,26 +26,24 @@
 
 		_create : function(){
 			var options = this.options;
-			console.log("creat method called:");
-			console.log(this);
-			this._utils.log("widget created!");
+			this._log("widget created!");
 		},
 
 		_distroy : function(){
-
+			this._log("Widget distroyed!");
 		},
 
-		_api : function(options){},
+		_api : function(options){
+			
+		},
 
-		_utils : {
-			/*
-				logger utility: only logs when verbose mode is on and console object exists
-			*/
-			log : function(str){
-				console.log(options);
-				if(options.verbose && console !== undefined && typeof console.constructor === Function){
-					console.log(str);
-				}
+		/*
+			logger utility: only logs when verbose mode is on and console object exists
+		*/
+		_log : function(str){
+			console.log(options);
+			if(options.verbose && console !== undefined && typeof console.constructor === Function){
+				console.log(str);
 			}
 		}
 	});
