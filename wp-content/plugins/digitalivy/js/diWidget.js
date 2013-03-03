@@ -41,8 +41,7 @@
 			logger utility: only logs when verbose mode is on and console object exists
 		*/
 		_log : function(str){
-			console.log(this.options.verbose && console !== undefined && console.log !== undefined && typeof console.log.constructor === Function);
-			if(this.options.verbose && console !== undefined && console.log !== undefined && typeof console.log.constructor === Function){
+			if(this.options.verbose && console !== undefined && console.log !== undefined && console.log.constructor === Function){
 				console.log(str);
 			}
 		}
