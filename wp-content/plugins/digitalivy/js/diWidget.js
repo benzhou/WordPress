@@ -12,6 +12,8 @@
     }
 }(function($){
 	$.widget("triton.digitalIvy", {
+		version : "0.0.1",
+		self : this,
 		options:{
 			verbose : true,//false,
 			api: {
@@ -39,7 +41,7 @@
 				logger utility: only logs when verbose mode is on and console object exists
 			*/
 			log : function(str){
-				if(this.options.verbose && console !== undefined && typeof console.constructor === Function){
+				if(self.options.verbose && console !== undefined && typeof console.constructor === Function){
 					console.log(str);
 				}
 			}
