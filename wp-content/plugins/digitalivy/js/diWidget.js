@@ -87,7 +87,13 @@
 				return uri;
 		},
 		_cleanApiHost : function(){
-			return this.options.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, "");
+			var self = this;
+			return this.options.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, function(_, protocol, rest){
+				self._log("protocol: " + protocol);
+				self._log("rest: " + rest);
+				self._log("_ : " + _);
+				return rest;
+			});
 		},
 		_isXDomain : function(){
 			if(this.options.api.forceHttps && document.location.protocol !== "https:"){
