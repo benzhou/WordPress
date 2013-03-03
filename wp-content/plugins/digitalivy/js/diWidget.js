@@ -35,6 +35,9 @@
 			this._log("_create: Start to request data, call _getDIContestList method...");
 			this._getDIContestList({
 				orgCode : "TD"
+			}).done(function(data){
+				this._log("_create: result from API call:");
+				this._log(data);
 			});
 		},
 
@@ -74,7 +77,7 @@
 				opt = this.options,
 				url =  options.url;
 
-			this._log("_api: url:" + url);
+			this._log("_api: url:" + urlEncode);
 			return $.ajax({
 				type: type,
                 dataType: dataType,
@@ -112,7 +115,7 @@
 
 			this._log("Current host of the page:");
 			this._log(document.location.host);
-			this._log("Clean up api call host:");
+			this._log("Cleaning up api call host...");
 			var opt = this.options,
 			cleanApiHost = this._cleanApiHost();
 
