@@ -51,10 +51,13 @@
 			var orgCode = options.orgCode,
 				state = options.state || "current",
 				listType = options.listType || 0,
-				uri  = this._getApiUrl("getContestList") + "/" + state + "/" + orgCode + "/" + listType + this._isXDomain() ? "?callback=?" : "",
+				xdomain = _this._isXDomain(),
+				uri  = this._getApiUrl("getContestList") + "/" + state + "/" + orgCode + "/" + listType + xdomain ? "?callback=?" : "",
 				promise = this._api({
 					url : uri
 				});
+
+				this._log("Is this call corss domain? answer: " + xdomain);
 
 				return promise;
 		},
@@ -69,7 +72,6 @@
 				dataType = options.dataType || "json",
 				cache = options.cache || false,
 				opt = this.options,
-				isXDomain = this._isXDomain(),
 				url =  options.url
 			return $.ajax({
 				type: type,
@@ -115,7 +117,7 @@
 			this._log("_isXDomain: Original api host: " + opt.api.url);
 			this._log("_isXDomain: Cleaned api Host: " + cleanApiHost);
 
-			return document.location.host === cleanApiHost;
+			return document.location.host !== cleanApiHost;
 		},
 
 		/*
