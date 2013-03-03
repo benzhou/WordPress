@@ -26,6 +26,8 @@
 
 		_create : function(){
 			var options = this.options;
+			console.log("creat method called:");
+			console.log(this);
 			this._utils.log("widget created!");
 		},
 
