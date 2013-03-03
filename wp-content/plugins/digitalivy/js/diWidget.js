@@ -25,7 +25,8 @@
 		},
 
 		_create : function(){
-			var opt = this.options;
+			var opt = this.options,
+				self = this;
 			this._log("_create: widget created!");
 			this._log(param2);
 
@@ -44,6 +45,10 @@
 		_setOption : function( key, value ){
 			this._log("_setOption: _setOption called.");
 			this._super( "_setOption", key, value );
+		},
+
+		_refresh(){
+
 		},
 
 		_distroy : function(){
