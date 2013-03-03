@@ -37,8 +37,8 @@
 			this._getDIContestList({
 				orgCode : "TD"
 			}).done(function(data){
-				this._log("_create: result from API call:");
-				this._log(data);
+				self._log("_create: result from API call:");
+				self._log(data);
 			});
 		},
 
@@ -47,7 +47,7 @@
 			this._super( "_setOption", key, value );
 		},
 
-		_refresh(){
+		_refresh: function(){
 
 		},
 
