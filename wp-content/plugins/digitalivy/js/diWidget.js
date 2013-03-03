@@ -47,7 +47,7 @@
 			this._log("_distroy: Widget distroyed!");
 		},
 
-		_getDIContestList = function(options){
+		_getDIContestList : function(options){
 			var orgCode = options.orgCode,
 				state = options.state || "current",
 				listType = options.listType || 0,
@@ -78,7 +78,7 @@
                 url: uri	
 			});
 		},
-		_getApiUrl = function(method){
+		_getApiUrl : function(method){
 			var opt = this.options,
 				protocol = opt.api.forceHttps? "https" : "http",
 				cleanedApiHost = this._cleanApiHost()
@@ -86,10 +86,10 @@
 
 				return uri;
 		},
-		_cleanApiHost = function(){
+		_cleanApiHost : function(){
 			return opt.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, "");
 		},
-		_isXDomain = function(){
+		_isXDomain : function(){
 			if(this.options.api.forceHttps && document.location.protocol !== "https"){
 				this._log("_isXDomain : Forced to use Https, but currently on a non-secured page");
 				return true;
