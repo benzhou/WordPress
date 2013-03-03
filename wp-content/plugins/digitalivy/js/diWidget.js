@@ -80,9 +80,9 @@
 		},
 		_getApiUrl : function(method){
 			var opt = this.options,
-				protocol = opt.api.forceHttps? "https" : "http",
+				protocol = opt.api.forceHttps? "https:" : "http:",
 				cleanedApiHost = this._cleanApiHost()
-				uri = protocol + cleanedApiHost + opt.api.methods[method];
+				uri = protocol + "//" + cleanedApiHost + opt.api.methods[method];
 
 				return uri;
 		},
