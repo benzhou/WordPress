@@ -57,7 +57,7 @@
 					url : uri
 				});
 
-				this._log("Is this call corss domain? answer: " + xdomain);
+				this._log("_getDIContestList: Is this call corss domain? answer: " + xdomain);
 
 				return promise;
 		},
@@ -72,12 +72,14 @@
 				dataType = options.dataType || "json",
 				cache = options.cache || false,
 				opt = this.options,
-				url =  options.url
+				url =  options.url;
+
+			this._log("_api: url:" + url);
 			return $.ajax({
 				type: type,
                 dataType: dataType,
                 cache: cache,
-                url: uri	
+                url: url	
 			});
 		},
 		_getApiUrl : function(method){
