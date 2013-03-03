@@ -29,7 +29,7 @@ digitalIvy.listApp.addView(function ($) {
 
     listView.prototype.renderStateBar = function (listType) {
         listType = listType || 1;
-
+        
         $("#container-contestStates").html([
             '<ul class="contest-sorting clearfix">',
             '<li data-loc="current" class="', listType === 1 ? 'active' : '', '"><a href="#/current">', this.config.labels.stateC, '</a></li>',
