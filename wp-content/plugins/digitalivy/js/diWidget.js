@@ -77,7 +77,7 @@
 				opt = this.options,
 				url =  options.url;
 
-			this._log("_api: url:" + urlEncode);
+			this._log("_api: url:" + url);
 			return $.ajax({
 				type: type,
                 dataType: dataType,
