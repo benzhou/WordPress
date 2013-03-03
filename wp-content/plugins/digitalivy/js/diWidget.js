@@ -34,15 +34,15 @@
 		},
 
 		_api : function(options){
-			
+
 		},
 
 		/*
 			logger utility: only logs when verbose mode is on and console object exists
 		*/
 		_log : function(str){
-			console.log(options);
-			if(options.verbose && console !== undefined && typeof console.constructor === Function){
+			console.log(this.options);
+			if(this.options.verbose && console !== undefined && typeof console.constructor === Function){
 				console.log(str);
 			}
 		}
