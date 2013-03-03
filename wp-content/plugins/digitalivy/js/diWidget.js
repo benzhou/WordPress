@@ -87,7 +87,7 @@
 				return uri;
 		},
 		_cleanApiHost : function(){
-			return opt.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, "");
+			return this.options.api.url.replace(/((?:ht|f)tp:\/\/)?([^:\/\s]+\w+\.(?:com|net|org))/gi, "");
 		},
 		_isXDomain : function(){
 			if(this.options.api.forceHttps && document.location.protocol !== "https"){
