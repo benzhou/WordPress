@@ -42,7 +42,7 @@
 		*/
 		_log : function(str){
 			console.log(this.options);
-			if(this.options.verbose && console !== undefined && typeof console.constructor === Function){
+			if(this.options.verbose && console !== undefined && console.log !== undefined && typeof console.log.constructor === Function){
 				console.log(str);
 			}
 		}
