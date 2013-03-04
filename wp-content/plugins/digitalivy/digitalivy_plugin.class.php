@@ -169,7 +169,9 @@ class DigitalIvy_Plugin {
 			wp_print_scripts('diWidget');
 
 			echo '<script type="text/javascript">
-					$("#diListWidget").digitalIvy();
+					(function($){
+						$("#diListWidget").digitalIvy();
+					})(jQuery);
 				</script>';
 		}
 	}
