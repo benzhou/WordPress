@@ -171,9 +171,9 @@ class DigitalIvy_Plugin {
 			echo '<script type="text/javascript">
 					(function($){
 						$("#diListWidget").digitalIvy({
-							orgCode: ' . get_option(TRITON_DI_OPTION_ORG_CODE) . ',
+							orgCode: "' . get_option(TRITON_DI_OPTION_ORG_CODE) . '",
 							api : {
-								url: ' . get_option(TRITON_DI_OPTION_DATA_FEED_URL) . '
+								url: "' . get_option(TRITON_DI_OPTION_DATA_FEED_URL) . '"
 							}
 						});
 					})(jQuery);
