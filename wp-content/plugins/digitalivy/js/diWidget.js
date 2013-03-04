@@ -51,9 +51,12 @@
 		},
 		
 		refresh: function(){
+			var opt = this.options,
+				self = this;
+
 			this._log("refresh: Start to request data, call _getDIContestList method...");
 			this._getDIContestList({
-				orgCode : this.options.orgCode
+				orgCode : opt.orgCode
 			}).done(function(data){
 				self._log("refresh: result from API call:");
 				self._log(data);
