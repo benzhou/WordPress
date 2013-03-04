@@ -15,6 +15,32 @@
 		version : "0.0.1",
 		options:{
 			verbose : true,//false,
+			labels: {
+                ListEnter: "Enter",
+                ListView: "View Contest",
+                sweepCurrentListEnd: "Ends in {0} days",
+                sweepCurrentListEndToday: "Ends today",
+                ugcCurrentSubmissionEnd: "Submissions end in {0} days",
+                ugcCurrentSubmissionEndToday: "Submissions end today",
+                ugcCurrentVotingEnd: "Voting ends in {0} days",
+                ugcCurrentVotingEndToday: "Voting ends today",
+                contestUpcoming: "This contest starts on {0}",
+                contestClosed: "This contest has closed",
+                stateC: "Current",
+                stateU: "Upcoming",
+                stateCl: "Closed",
+                searchPh: "Search for Contest",
+                featured: "Featured Contests",
+                EMPTYUPCOMINGLIST: "Currently, there are no upcoming contests scheduled. Please check back soon.",
+                EMPTYCURRENTLIST: "Currently, there are no active contests. Please check back soon.",
+                EMPTYEXPIREDLIST: "No contests have ended in the last 30 days.",
+                headers: {
+                    current: "Currently Active Contests",
+                    upcoming: "Upcoming Contests",
+                    closed: "Expired Contests"
+                }
+		    }, 
+		    orgCode: "TD",
 			api: {
 	            url: "http://dev4sanban.test.listenernetwork.net",
 	            forceHttps: false,
@@ -23,32 +49,47 @@
 	            }
         	}
 		},
+		
+		refresh: function(){
+			this._log("refresh: Start to request data, call _getDIContestList method...");
+			this._getDIContestList({
+				orgCode : this.options.orgCode
+			}).done(function(data){
+				self._log("refresh: result from API call:");
+				self._log(data);
+			}).fail(function(){
+				self._log("refresh: _getDIContestList call failed...");
+			});
+		},
 
 		_create : function(){
 			var opt = this.options,
 				self = this;
 			this._log("_create: widget created!");
-			this._log(param2);
 
 			this._log("_create: this.element:");
 			this._log(this.element);
 
-			this._log("_create: Start to request data, call _getDIContestList method...");
-			this._getDIContestList({
-				orgCode : "TD"
-			}).done(function(data){
-				self._log("_create: result from API call:");
-				self._log(data);
-			});
+			$(['<div id="container-bg" class="list">',
+	            '<div id="container-list">',
+	                '<div id="container-list-header">',
+	                        '<h1></h1>',
+	                '</div>',
+	                '<div id="featured-contest-items"></div>',
+	                '<div id="container-contestitems">',
+	                    '<div id="container-contestStates"></div>',
+	                    '<div id="container-contestListItem"></div>',
+	                '</div>',
+	            '</div>',
+	        '</div>'].join(''))
+	        .insertAfter(this.element);
+			this.element.hide();
+			this.refresh();
 		},
 
 		_setOption : function( key, value ){
 			this._log("_setOption: _setOption called.");
 			this._super( "_setOption", key, value );
-		},
-
-		_refresh: function(){
-
 		},
 
 		_distroy : function(){
