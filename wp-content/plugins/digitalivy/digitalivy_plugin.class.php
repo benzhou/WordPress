@@ -1,6 +1,7 @@
 <?php 
 class DigitalIvy_Plugin {
 	private $diListShortCodeFound = false;
+	private $diWidgetShortCodeFound = false;
 
 	public function __construct() {
 
@@ -84,8 +85,12 @@ class DigitalIvy_Plugin {
 	            </div>
 	        </div>
 			';
+	}
 
+	public function init_diWidet_list(){
+		$this->diWidgetShortCodeFound = true;
 
+		echo '<div id="diListWidget" class="list"></div>';
 	}
 
 	public function di_plugin_footer(){
@@ -147,6 +152,24 @@ class DigitalIvy_Plugin {
 		                }
 		            }
 		        });
+				</script>';
+		}
+
+		//Only renders the script if the short code presented
+		if($this->diWidgetShortCodeFound == true){
+			//Print out all style /scripts needed for the contest list.
+			//TODO: this is definitely not the place I want to place them (I want to place them in the head instead of footer)
+			wp_print_styles('dicss');
+			wp_print_styles('dilistcss');
+			wp_print_styles('diwordpress');
+
+			wp_print_scripts('jquerywidget');
+			wp_print_scripts('dijqueryeasing');
+			wp_print_scripts('dijqueryelastislide');
+			wp_print_scripts('diWidget');
+
+			echo '<script type="text/javascript">
+					$("#diListWidget").digitalIvy();
 				</script>';
 		}
 	}

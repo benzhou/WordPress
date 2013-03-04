@@ -53,5 +53,6 @@ add_action("init", array($diPlugin, 'init_di_plugin'));
 add_action("wp_footer", array($diPlugin, "di_plugin_footer"));
 //Shortcode 
 add_shortcode('digitalIvyList', array($diPlugin, 'init_di_list')); 
+add_shortcode('diWidgetList', array($diPlugin, 'init_diWidet_list')); 
 
 ?>
