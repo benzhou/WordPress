@@ -1,12 +1,51 @@
 <div id="container-bg" class="list">
-    <div id="container-list">
-        <div id="container-list-header">
-                <h1>{Title}</h1>
-        </div>,
-        <div id="featured-contest-items"></div>
-        <div id="container-contestitems">
-            <div id="container-contestStates"></div>
-            <div id="container-contestListItem"></div>
-        </div>
-    </div>
+   <div id="container-list">
+      <div id="container-list-header">
+         <h1>{labels.headers.current}</h1>
+      </div>
+      <div id="featured-contest-items">
+         <h1>{labels.featured}</h1>
+         <div id="carousel" class="es-carousel-wrapper">
+            <div class="es-carousel">
+               <ul>
+                  {#featured}
+                  <li><a href="{url}" target="{target}"><img src="{thumbnail}" class="reflect" /></a></li>{~n}
+                  {/featured}
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div id="container-contestitems">
+         <div id="container-contestStates">
+            <ul class="contest-sorting clearfix">
+               <li data-loc="current" class="active"><a href="#/current">{labels.stateC}</a></li>
+               <li data-loc="upcoming" class=""><a href="#/upcoming">{labels.stateU}</a></li>
+               <li data-loc="closed" class="last"><a href="#/closed">{labels.stateCl}</a></li>
+            </ul>
+            <div class="contest-search-container"><input id="diSearch" class="contest-search" type="search" placeholder="{labels.searchPh}"></div>
+            <br class="clear">
+         </div>
+         <div id="container-contestListItem">
+            {#items}
+            <ul>
+               <li>
+                  <div class="contest-item">
+                     <div class="container-header">
+                        <h1>{name}</h1>
+                     </div>
+                     <div class="contest-contentcontainer clearfix">
+                        <div class="contest-thumb-container"><img class="contest-thumb" src="{thumbnail}"></div>
+                        <div class="contest-info clearfix">
+                           <p class="contest-description">{desc}</p>
+                           <p class="contest-dates"><span class="contest-icon-clock"></span>{clockMsg}</p>
+                           <a href="{url}" class="contest-enterbutton" target="{target}">{labels.listEnter}}</a>
+                        </div>
+                     </div>
+                  </div>
+               </li>
+            </ul>{~n}
+            {/items}
+         </div>
+      </div>
+   </div>
 </div>

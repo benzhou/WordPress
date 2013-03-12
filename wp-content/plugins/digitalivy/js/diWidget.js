@@ -4,20 +4,21 @@
         // Register as an anonymous AMD module:
         define([
             'jquery',
-            'jquery.ui.widget'
+            'jquery.ui.widget',
+            'dust'
         ], factory);
     } else {
         // Browser globals:
-        factory(window.jQuery);
+        factory(window.jQuery, window.dust);
     }
-}(function($, param2){
+}(function($, dust){
 	$.widget("triton.digitalIvy", {
 		version : "0.0.1",
 		options:{
 			verbose : true,//false,
 			labels: {
-                ListEnter: "Enter",
-                ListView: "View Contest",
+                listEnter: "Enter",
+                listView: "View Contest",
                 sweepCurrentListEnd: "Ends in {0} days",
                 sweepCurrentListEndToday: "Ends today",
                 ugcCurrentSubmissionEnd: "Submissions end in {0} days",
@@ -31,9 +32,9 @@
                 stateCl: "Closed",
                 searchPh: "Search for Contest",
                 featured: "Featured Contests",
-                EMPTYUPCOMINGLIST: "Currently, there are no upcoming contests scheduled. Please check back soon.",
-                EMPTYCURRENTLIST: "Currently, there are no active contests. Please check back soon.",
-                EMPTYEXPIREDLIST: "No contests have ended in the last 30 days.",
+                emptyUpcomminglist: "Currently, there are no upcoming contests scheduled. Please check back soon.",
+                emptyActiveList: "Currently, there are no active contests. Please check back soon.",
+                emptyClosedList: "No contests have ended in the last 30 days.",
                 headers: {
                     current: "Currently Active Contests",
                     upcoming: "Upcoming Contests",
@@ -41,25 +42,72 @@
                 }
 		    }, 
 		    orgCode: "TD",
+		    defaultState : "current", //"upcomming", "closed",
 			api: {
 	            url: "http://dev4sanban.test.listenernetwork.net",
 	            forceHttps: false,
 	            methods: {
 	                getContestList: "/Contest/Home/GetContestList"
 	            }
+        	},
+        	templates : {
+        		diListMain : "diListMain"
+        	},
+        	create: function(event, data){
+        		var that = $(this).data("triton-digitalIvy") || $(this).data("digitalIvy"),
+        			opt = that.options;
+        		// this._log("create event handler called. event data is here");
+        		// this._log(e);
+        		// this._log(e2);
+        		that.log("create event handler called. event data is here");
+        		that.log(event);
+        		that.log(data);
+        		that.log(opt);
         	}
 		},
 		
-		refresh: function(){
+		refresh: function(listState){
 			var opt = this.options,
 				self = this;
 
+			listState = listState || opt.defaultState;
+
 			this._log("refresh: Start to request data, call _getDIContestList method...");
 			this._getDIContestList({
-				orgCode : opt.orgCode
+				orgCode : opt.orgCode,
+				state : listState
 			}).done(function(data){
 				self._log("refresh: result from API call:");
 				self._log(data);
+
+				var model = {
+					labels : opt.labels,
+					featured : [],
+					items : []
+				};
+
+				for(var i in data){
+					//if returned item is featured, then add it into the featured collection
+					if(data.FeaturedInCarousel){
+						model.featured.push({
+							url : data[i].ContestUrl,
+							thumbnail: data[i].ThumbnailImage
+						});
+					}
+
+					model.items.push({
+						
+					});
+				}
+
+				this._dustRender(opt.templates.diListMain, model)
+			  		.done(function(html){
+			  			$(html).insertAfter(self.element);
+			  			
+			  		}).fail(function(err){
+			  			self._log("_create: Error when render templates:" + err);		
+			  		});
+
 			}).fail(function(){
 				self._log("refresh: _getDIContestList call failed...");
 			});
@@ -73,21 +121,30 @@
 			this._log("_create: this.element:");
 			this._log(this.element);
 
-			$(['<div id="container-bg" class="list">',
-	            '<div id="container-list">',
-	                '<div id="container-list-header">',
-	                        '<h1></h1>',
-	                '</div>',
-	                '<div id="featured-contest-items"></div>',
-	                '<div id="container-contestitems">',
-	                    '<div id="container-contestStates"></div>',
-	                    '<div id="container-contestListItem"></div>',
-	                '</div>',
-	            '</div>',
-	        '</div>'].join(''))
-	        .insertAfter(this.element);
-			this.element.hide();
-			this.refresh();
+			// $(['<div id="container-bg" class="list">',
+	  //           '<div id="container-list">',
+	  //               '<div id="container-list-header">',
+	  //                       '<h1></h1>',
+	  //               '</div>',
+	  //               '<div id="featured-contest-items"></div>',
+	  //               '<div id="container-contestitems">',
+	  //                   '<div id="container-contestStates"></div>',
+	  //                   '<div id="container-contestListItem"></div>',
+	  //               '</div>',
+	  //           '</div>',
+	  //       '</div>'].join(''))
+	  //       .insertAfter(this.element);
+
+	  		// this._dustRender(opt.templates.diListMain, {title:opt.labels.headers.current})
+		  	// 	.done(function(html){
+		  	// 		$(html).insertAfter(self.element);
+		  	// 		self.element.hide();
+					// self.refresh();
+		  	// 	}).fail(function(err){
+		  	// 		self._log("_create: Error when render templates:" + err);		
+		  	// 	});
+			self.element.hide();
+			self.refresh();
 		},
 
 		_setOption : function( key, value ){
@@ -95,8 +152,21 @@
 			this._super( "_setOption", key, value );
 		},
 
-		_distroy : function(){
-			this._log("_distroy: Widget distroyed!");
+		_destroy : function(){
+			this._log("_destroy: Widget distroyed!");
+		},
+
+		_dustRender : function(name, ctx){
+			var def = $.Deferred();
+			dust.render(name, ctx, function(err, out){
+				if (err) {
+					def.reject(err);
+				}else{
+					def.resolve(out);
+				}
+				
+			});
+			return def.promise();
 		},
 
 		_getDIContestList : function(options){
@@ -172,6 +242,9 @@
 			this._log("_isXDomain: Cleaned api Host: " + cleanApiHost);
 
 			return document.location.host !== cleanApiHost;
+		},
+		log:function(str){
+			this._log(str);
 		},
 
 		/*
